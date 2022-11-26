@@ -3,12 +3,13 @@ import { Ticket } from "../entities/Ticket";
 
 interface ITicketRequest {
   event_id: string;
+  isAvailable: boolean;
 }
 
 class CreateTicketService {
-  async execute({ event_id }: ITicketRequest): Promise<Ticket> {
+  async execute({ event_id, isAvailable }: ITicketRequest): Promise<Ticket> {
     const repository = AppDataSource.getRepository(Ticket);
-    const ticket = repository.create({ event_id });
+    const ticket = repository.create({ event_id, isAvailable });
 
     await repository.save(ticket);
 

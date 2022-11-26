@@ -21,6 +21,9 @@ class Ticket {
   @Column()
   event_id: string;
 
+  @Column({ name: "available" })
+  isAvailable: boolean;
+
   @CreateDateColumn()
   created_at: Date;
 
