@@ -4,6 +4,7 @@ import { CreateHostEventController } from "./controllers/CreateHostEventControll
 import { CreateTicketController } from "./controllers/CreateTicketController";
 import { ListAllAvailableTicketsController } from "./controllers/ListAllAvailableTicketsController";
 import { ListAllTicketsController } from "./controllers/ListAllTicketsController";
+import { ListAllUnavailableTicketsController } from "./controllers/ListAllUnavailableTicketsController";
 
 const routes = Router();
 
@@ -12,5 +13,9 @@ routes.post("/event", new CreateEventControler().handle);
 routes.post("/ticket", new CreateTicketController().handle);
 routes.get("/ticket", new ListAllTicketsController().handle);
 routes.get("/availabletickets", new ListAllAvailableTicketsController().handle);
+routes.get(
+  "/unavailabletickets",
+  new ListAllUnavailableTicketsController().handle
+);
 
 export { routes };
