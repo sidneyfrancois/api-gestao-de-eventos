@@ -1,11 +1,14 @@
 import "reflect-metadata";
 require("dotenv").config();
-import { createConnection } from "./database";
+import { AppDataSource } from "./database";
 import express from "express";
 
-createConnection();
 const app = express();
 
-app.use(express.json());
+AppDataSource.initialize()
+  .then(() => {
+    app.use(express.json());
 
-app.listen(process.env.PORT, () => console.log("Server is running"));
+    app.listen(process.env.PORT, () => console.log("Event API is running"));
+  })
+  .catch((error) => console.log("Database connection error: " + error));

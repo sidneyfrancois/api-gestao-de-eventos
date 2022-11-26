@@ -2,19 +2,31 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 require("dotenv").config();
 
-const dataSource = new DataSource({
+const port = process.env.TYPEORM_PORT as unknown as number | undefined;
+
+let sslOption;
+
+process.env.NODE_ENV === "development"
+  ? (sslOption = null)
+  : (sslOption = {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    });
+
+const AppDataSource = new DataSource({
   type: "postgres",
   host: process.env.TYPEORM_HOST,
-  port: Number(process.env.TYPEORM_PORT),
+  port: port,
   username: process.env.TYPEORM_USERNAME,
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
-  entities: ["./src/entities/*.ts"],
-  migrations: ["./src/database/migrations/*.ts"],
+  entities: [`${process.env.TYPEORM_ENTITIES}/entities/*.{ts,js}`],
+  migrations: [
+    `${process.env.TYPEORM_MIGRATIONS}/database/migrations/*.{ts,js}`,
+  ],
+  extra: sslOption,
 });
 
-export function createConnection(host = "localhost"): Promise<DataSource> {
-  return dataSource.setOptions({ host }).initialize();
-}
-
-export default dataSource;
+export { AppDataSource };
