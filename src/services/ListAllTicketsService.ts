@@ -6,9 +6,7 @@ class ListAllTicketsService {
     const repository = AppDataSource.getRepository(Ticket);
 
     const allTickets = await repository.find({
-      relations: {
-        event: true,
-      },
+      relations: ["event", "event.hostEvent"],
     });
 
     return allTickets;
