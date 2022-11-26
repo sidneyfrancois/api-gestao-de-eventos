@@ -13,6 +13,9 @@ class HostEvent {
   @PrimaryColumn()
   id: string;
 
+  @Column({ name: "name" })
+  hostEventName: string;
+
   @OneToMany(() => Event, (event) => event.hostEvent)
   events: Event[];
 
