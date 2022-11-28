@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { BuyTicketController } from "./controllers/BuyTicketController";
 import { CreateEventControler } from "./controllers/CreateEventController";
 import { CreateHostEventController } from "./controllers/CreateHostEventController";
 import { CreateTicketController } from "./controllers/CreateTicketController";
@@ -17,5 +18,6 @@ routes.get(
   "/unavailabletickets",
   new ListAllUnavailableTicketsController().handle
 );
+routes.post("/buyticket", new BuyTicketController().handle);
 
 export { routes };
