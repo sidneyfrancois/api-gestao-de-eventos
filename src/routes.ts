@@ -3,6 +3,7 @@ import { BuyTicketController } from "./controllers/BuyTicketController";
 import { CreateEventControler } from "./controllers/CreateEventController";
 import { CreateHostEventController } from "./controllers/CreateHostEventController";
 import { CreateTicketController } from "./controllers/CreateTicketController";
+import { GetOneEventController } from "./controllers/GetOneEventController";
 import { ListAllAvailableTicketsController } from "./controllers/ListAllAvailableTicketsController";
 import { ListAllTicketsController } from "./controllers/ListAllTicketsController";
 import { ListAllUnavailableTicketsController } from "./controllers/ListAllUnavailableTicketsController";
@@ -19,5 +20,6 @@ routes.get(
   new ListAllUnavailableTicketsController().handle
 );
 routes.post("/buyticket", new BuyTicketController().handle);
+routes.get("/event", new GetOneEventController().handle);
 
 export { routes };
