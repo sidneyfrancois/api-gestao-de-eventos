@@ -5,6 +5,7 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryColumn,
 } from "typeorm";
 import { HostEvent } from "./HostEvent";
@@ -25,6 +26,7 @@ class Event {
   @Column({ name: "hostevent_id" })
   hostEvent_id: string;
 
+  @OneToMany(() => Ticket, (ticket) => ticket.event)
   tickets: Ticket[];
 
   @CreateDateColumn()
