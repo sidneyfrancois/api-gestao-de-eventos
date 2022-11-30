@@ -7,7 +7,8 @@
     "build": "tsc",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "start": "ts-node build/server.js"
+    "start": "ts-node dist/server.js",
+    "start-docker": "npm run typeorm migration:run -- -d ./src/database/index.ts && npm start"
   },
   "keywords": [],
   "author": "",
