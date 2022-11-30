@@ -12,6 +12,10 @@ API para gestão de eventos, usuários podem buscar e comprar ingressos de um de
 
 Neste projeto foi utilizado o Typeorm para manipulação dos dados no banco de dados.
 
+## Banco de Dados
+
+![Data Base diagram](/diagram.png)
+
 ## Instruções
 
 - clonar repositório.
@@ -26,7 +30,7 @@ Neste projeto foi utilizado o Typeorm para manipulação dos dados no banco de d
   ```
     docker compose up -d
   ```
-  Após a initialização dos containers é feita a migration para criação de tabelas do banco de dados e posteriormente a aplicação se inicializa.
+  Após a initialização dos containers é feita a migration para criação de tabelas no banco de dados e posteriormente a aplicação se inicializa.
 
 ## Endpoints
 
