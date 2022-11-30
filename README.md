@@ -27,3 +27,109 @@ Neste projeto foi utilizado o Typeorm para manipulação dos dados no banco de d
     docker compose up -d
   ```
   Após a initialização dos containers é feita a migration para criação de tabelas do banco de dados e posteriormente a aplicação se inicializa.
+
+## Endpoints
+
+- Criação do host do evento (empresa ou universidade)
+
+  `POST /hostevent`
+
+  Corpo da requisição
+
+  ```
+  {
+    "name": "name_host_event"
+  }
+  ```
+
+- Criação do evento
+
+  `POST /event`
+
+  Corpo da requisição
+
+  ```
+  {
+    "name": "name_event",
+    "hostevent_id": "cdf5fbd7-104a-4071-b9e3-dedf68ba579b"
+  }
+  ```
+
+- Criação de ingresso
+
+  `POST /ticket`
+
+  Corpo da requisição
+
+  ```
+  {
+    "event_id": "748cedc4-47cc-48dc-883b-06abfa4bcd88",
+    "isAvailable": true
+  }
+  ```
+
+- Listar todos os ingressos disponíveis
+
+  `GET /ticket`
+
+- Criação do host do evento (empresa ou universidade)
+
+  `POST /hostevent`
+
+  Corpo da requisição
+
+  ```
+  {
+    "name": "name_host_event"
+  }
+  ```
+
+- Criação do evento
+
+  `POST /event`
+
+  Corpo da requisição
+
+  ```
+  {
+    "name": "name_event",
+    "hostevent_id": "cdf5fbd7-104a-4071-b9e3-dedf68ba579b"
+  }
+  ```
+
+- Criação de ingresso
+
+  `POST /ticket`
+
+  Corpo da requisição
+
+  ```
+  {
+    "event_id": "748cedc4-47cc-48dc-883b-06abfa4bcd88",
+    "isAvailable": true
+  }
+  ```
+
+- Listar todos os ingressos
+
+  `GET /ticket`
+
+- Listar todos os ingressos disponíveis
+
+  `GET /availabletickets`
+
+- Listar todos os ingressos indisponíveis
+
+  `GET /unavailabletickets`
+
+- Compra de ingresso
+
+  `POST /buyticket`
+
+  Corpo da requisição
+
+  ```
+  {
+    "ticket_id": "748cedc4-47cc-48dc-883b-06abfa4bcd88"
+  }
+  ```
